@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IQ Clash | Registracija</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container" style="max-width: 400px; margin-top: 80px;">
+        
+        <span class="brand-label">⚡ IQ CLASH</span>
+        <h1>Novi Nalog</h1>
+        <p style="color: #666; margin-bottom: 20px;">Pridruži se hiljadama takmičara!</p>
+        
+        <form method="POST" action="/register">
+            <div class="form-group" style="text-align: left; width: 100%;">
+                
+                {# INPUT: Korisničko ime koje će biti upisano u bazu u tabelu 'users' #}
+                <input type="text" name="username" placeholder="Korisničko ime" required 
+                       style="width: 100%; padding: 12px; margin: 8px 0; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box;">
+                
+                {# INPUT: type="email" automatski proverava format adrese pre slanja #}
+                <input type="email" name="email" placeholder="Email adresa" required
+                       style="width: 100%; padding: 12px; margin: 8px 0; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box;">
+                
+                {# INPUT: type="password" osigurava da se lozinka ne vidi dok se kuca #}
+                <input type="password" name="password" placeholder="Lozinka" required
+                       style="width: 100%; padding: 12px; margin: 8px 0; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box;">
+            </div>
+            
+            <button type="submit" class="btn-submit" style="margin-top: 15px;">Napravi nalog</button>
+        </form>
+        
+        <div style="margin-top: 20px;">
+            <p style="font-size: 0.9em; color: #666;">
+                Već imate nalog? <a href="/login" style="color: var(--primary); text-decoration: none; font-weight: bold;">Prijavite se</a>
+            </p>
+            
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+            
+            <a href="/" style="text-decoration: none; color: var(--dark); font-size: 0.9em;">← Nazad na početnu</a>
+        </div>
+    </div>
+</body>
+</html>

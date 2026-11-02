@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IQ Clash | Rang Lista</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden; 
+        }
+        .leaderboard-table th {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        .leaderboard-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .leaderboard-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .pos-badge {
+            background: #f1f1f1;
+            padding: 4px 10px;
+            border-radius: 50%;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+      
+        tr:nth-child(1) .pos-badge { background: #FFD700; color: #000; } 
+        tr:nth-child(2) .pos-badge { background: #C0C0C0; color: #000; } 
+        tr:nth-child(3) .pos-badge { background: #CD7F32; color: #fff; } 
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="brand-label">⚡ IQ CLASH</span>
+        <h1>🏆 Top 10 Igrača</h1>
+        
+        <table class="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>Pozicija</th>
+                    <th>Korisnik</th>
+                    <th>Poeni</th>
+                    <th>Datum</th>
+                </tr>
+            </thead>
+            <tbody>
+                {# PETLJA: Prolazi kroz listu 'players' dobijenu iz baze podataka #}
+                {% for player in players %}
+                <tr>
+                    <td><span class="pos-badge">{{ loop.index }}.</span></td>
+                    
+                    <td><strong>{{ player.username }}</strong></td>
+                    
+                    <td style="color: var(--success); font-weight: bold;">{{ player.score }}</td>
+                    
+                    {# FORMATIRANJE DATUMA: Prikazuje datum u formatu Dan.Mesec.Godina. #}
+                    <td style="color: #666; font-size: 0.85rem;">{{ player.date.strftime('%d.%m.%Y.') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div style="margin-top: 30px;">
+            <a href="/" class="btn" style="background: var(--dark);">Nazad na početnu</a>
+        </div>
+    </div>
+</body>
+</html>

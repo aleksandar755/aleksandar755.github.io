@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IQ Clash | Prijava</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container" style="max-width: 400px; margin-top: 100px;">
+        
+        <span class="brand-label">⚡ IQ CLASH</span>
+        <h1>Prijava</h1>
+        
+        <form method="POST" action="/login">
+            <div class="form-group" style="text-align: left; width: 100%;">
+                
+                {# INPUT: Name="username" je ključan jer Flask preko tog imena hvata podatke #}
+                <input type="text" name="username" placeholder="Korisničko ime" required 
+                       style="width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box;">
+                
+                {# INPUT: type="password" skriva kucani tekst zvezdicama/tačkicama #}
+                <input type="password" name="password" placeholder="Lozinka" required
+                       style="width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box;">
+            </div>
+            
+            <button type="submit" class="btn-submit" style="margin-top: 10px;">Prijavi se</button>
+        </form>
+        
+        <div style="margin-top: 20px;">
+            <p style="font-size: 0.9em; color: #666;">
+                Nemate nalog? <a href="/register" style="color: var(--primary); text-decoration: none; font-weight: bold;">Registrujte se</a>
+            </p>
+            
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+            
+            <a href="/" style="text-decoration: none; color: var(--dark); font-size: 0.9em;">← Nazad na početnu</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IQ Clash | Kviz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {# JINJA2 PROVERA: Ako lista 'questions' (koju šalje app.py) nije prazna #}
+    {% if questions %}
+        <div id="timer-bar">
+            <div id="progress"></div>
+        </div>
+        <div id="timer-text">Preostalo vreme: <span id="seconds">90</span>s</div>
+    {% endif %}
+
+    <div class="container">
+        <span class="brand-label">⚡ IQ CLASH</span>
+
+        <h2 class="category-title">
+            {# Prikaz naziva kategorije ili natpisa 'Mešovito' ako kategorija nije odabrana #}
+            Kategorija: {{ category_name if category_name else 'Mešovito' }}
+        </h2>
+        
+        {% if questions %}
+            <form action="/result" method="POST" id="quiz-form">
+                
+                <input type="hidden" name="category_used" value="{{ category_name }}">
+                
+                {# PETLJA (FOR LOOP): Generiše karticu za svako pitanje koje je stiglo iz baze podataka #}
+                {% for q in questions %}
+                <div class="question-card">
+                    <h3>{{ loop.index }}. {{ q.question }}</h3>
+                    
+                    <div class="options">
+                        <label><input type="radio" name="q{{ q.id }}" value="A"> {{ q.answer_a }}</label>
+                        <label><input type="radio" name="q{{ q.id }}" value="B"> {{ q.answer_b }}</label>
+                        <label><input type="radio" name="q{{ q.id }}" value="C"> {{ q.answer_c }}</label>
+                        <label><input type="radio" name="q{{ q.id }}" value="D"> {{ q.answer_d }}</label>
+                    </div>
+                </div>
+                {% endfor %}
+                
+                <button type="submit" class="btn-submit">Završi Kviz i pogledaj rezultat</button>
+            </form>
+        {% else %}
+            <div style="text-align: center; padding: 50px 20px;">
+                <span style="font-size: 50px;">🛠️</span>
+                <h3>Ups! Ova kategorija je trenutno prazna.</h3>
+                <p>Admin još uvek nije dodao pitanja ovde. Vrati se kasnije!</p>
+                <br>
+                <a href="/" class="btn" style="background: var(--dark);">Nazad na početnu</a>
+            </div>
+        {% endif %}
+    </div>
+
+    {# JAVASCRIPT: Pokreće se samo ako ima pitanja na stranici #}
+    {% if questions %}
+    <script>
+        let timeLeft = 90;
+        const progressBar = document.getElementById('progress');
+        const secondsText = document.getElementById('seconds');
+        const form = document.getElementById('quiz-form');
+
+        const timer = setInterval(() => {
+            timeLeft--; // Smanjuje broj sekundi za 1
+            
+            // Ažurira broj sekundi na ekranu
+            if(secondsText) secondsText.innerText = timeLeft;
+            
+            // Računa širinu progres bara u procentima
+            let widthPercent = (timeLeft / 90) * 100;
+            if(progressBar) progressBar.style.width = widthPercent + "%";
+
+            // Menja boju bara u crvenu kada ostane manje od 15 sekundi
+            if (timeLeft <= 15) { 
+                if(progressBar) progressBar.style.backgroundColor = "#ff4757";
+            }
+
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                progressBar.style.transition = "none";
+                alert("Vreme je isteklo! Vaši odgovori se šalju...");
+                form.submit();
+            }
+        }, 1000);
+    </script>
+    {% endif %}
+</body>
+</html>

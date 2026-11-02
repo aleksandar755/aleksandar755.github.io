@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IQ Clash | Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .admin-container { max-width: 1000px; margin: 20px auto; padding: 20px; }
+        .form-group { margin-bottom: 15px; text-align: left; }
+        input, select, textarea { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 5px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 30px; background: white; }
+        th, td { padding: 12px; border-bottom: 1px solid #eee; text-align: left; font-size: 0.9em; }
+        th { background: #f8f9fa; color: var(--primary); }
+        .btn-delete { color: #ff4757; text-decoration: none; font-weight: bold; }
+        .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container admin-container">
+        <div class="admin-header">
+            <h1>⚡ IQ Clash Admin</h1>
+            <a href="{{ url_for('index') }}" class="btn" style="background: var(--dark);">Nazad</a>
+        </div>
+
+        <div class="question-card" style="background: #fdfdfd; border: 1px solid #eee;">
+            <h3 style="margin-top:0;">Dodaj novo pitanje</h3>
+            <form method="POST">
+                <div class="form-group">
+                    <label>Tekst pitanja:</label>
+                    <textarea name="question" required placeholder="Unesite pitanje..."></textarea>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label>Kategorija:</label>
+                        <select name="category">
+                            <option value="IT">IT</option>
+                            <option value="Sport">Sport</option>
+                            <option value="Opšte">Opšte</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Tačan odgovor (Slovo):</label>
+                        <select name="correct_answer">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <input type="text" name="answer_a" placeholder="Odgovor A" required>
+                    <input type="text" name="answer_b" placeholder="Odgovor B" required>
+                    <input type="text" name="answer_c" placeholder="Odgovor C" required>
+                    <input type="text" name="answer_d" placeholder="Odgovor D" required>
+                </div>
+                <button type="submit" class="btn-submit" style="margin-top:15px;">Sačuvaj pitanje</button>
+            </form>
+        </div>
+
+        <hr style="margin: 40px 0; border: 0; border-top: 1px solid #eee;">
+
+        <h3>Postojeća pitanja ({{ questions|length }})</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Kat.</th>
+                    <th>Pitanje</th>
+                    <th>Tačan</th>
+                    <th>Akcija</th>
+                </tr>
+            </thead>
+            <tbody>
+                {# PETLJA: Prolazi kroz listu 'questions' koju je poslao Flask #}
+                {% for q in questions %}
+                <tr>
+                    <td><span class="badge" style="background: #eee; color: #333; font-size: 10px; padding: 3px 8px;">{{ q.category }}</span></td>
+                    
+                    <td>{{ q.question[:60] }}{% if q.question|length > 60 %}...{% endif %}</td>
+                    
+                    <td style="text-align: center; font-weight: bold;">{{ q.correct_answer }}</td>
+                    
+                    <td>
+                        <a href="{{ url_for('delete_question', id=q.id) }}" 
+                           class="btn-delete" 
+                           onclick="return confirm('Sigurno brišeš?')">Obriši</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

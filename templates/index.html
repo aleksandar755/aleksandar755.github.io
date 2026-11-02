@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IQ Clash | Početna</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>⚡ IQ CLASH</h1>
+        <p>Dobrodošli u vrhunski izazov inteligencije!</p>
+        
+        <hr style="width: 80%; border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+
+        {# LOGIKA SESIJE: Proveravamo da li je korisnik ulogovan (postoji li username u sesiji) #}
+        {% if session['username'] %}
+            
+            <p class="welcome-msg">Zdravo, <strong>{{ session['username'] }}</strong>! Izaberi izazov:</p>
+            
+            <div class="category-grid">
+                <a href="/quiz?cat=IT" class="cat-card">
+                    <span class="icon">💻</span>
+                    <h3>IT Kviz</h3>
+                </a>
+                <a href="/quiz?cat=Sport" class="cat-card">
+                    <span class="icon">⚽</span>
+                    <h3>Sport</h3>
+                </a>
+                <a href="/quiz?cat=Opšte" class="cat-card">
+                    <span class="icon">🌍</span>
+                    <h3>Opšte</h3>
+                </a>
+            </div>
+
+            <div class="footer-links" style="margin-top: 30px;">
+                <a href="/leaderboard" class="btn">📊 Rang Lista</a>
+                
+                {# ADMIN PROVERA: Samo ako je username tačno 'admin', prikaži dugme za podešavanja #}
+                {% if session['username'] == 'admin' %}
+                    <a href="/admin" class="btn" style="background: var(--dark);">⚙️ Admin Panel</a>
+                {% endif %}
+                
+                <br><br>
+                <a href="/logout" class="logout-link" style="color: var(--danger); text-decoration: none; font-weight: bold;">Odjavi se</a>
+            </div>
+
+        {# ELSE: Ako korisnik NIJE ulogovan, prikaži mu kutiju za prijavu/registraciju #}
+        {% else %}
+            <div class="auth-box" style="padding: 40px; border: 1px solid #eee; border-radius: 15px; margin-top: 20px; background: #fff;">
+                <span class="icon" style="font-size: 50px;">🏆</span>
+                <h2>KVIZ ZNANJA</h2>
+                <p>Prijavite se da biste započeli kviz i sačuvali rezultat na globalnoj rang listi.</p>
+                
+                <div style="margin-top: 25px;">
+                    <a href="/login" class="btn">Prijava</a>
+                    <a href="/register" class="btn btn-outline">Registracija</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IQ Clash | Rezultat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .result-container { text-align: center; padding-top: 50px; }
+        .score-big { font-size: 3rem; color: var(--primary); margin: 10px 0; }
+        
+        .btn { transition: all 0.3s ease; text-decoration: none; display: inline-block; }
+
+        .btn-retry:hover { background: #218838 !important; transform: scale(1.05); }
+        
+        .btn-blue:hover { background: #2980b9 !important; transform: scale(1.05); }
+        
+        .btn-dark:hover { background: #2c3e50 !important; transform: scale(1.05); }
+    </style>
+</head>
+<body>
+    <div class="container result-container">
+        <span class="brand-label">⚡ IQ CLASH REZULTAT</span>
+        
+        <div class="badge {{ rank.lower() }}" style="margin-bottom: 20px; display: inline-block;">
+            {{ rank }} RANK
+        </div>
+        
+        <h1>Kraj Kviza!</h1>
+        
+        <div class="score-big">
+            {{ score }} / {{ total }}
+        </div>
+        
+        <p class="score-text" style="font-size: 1.2rem;">
+            Uspešnost: <strong>{{ percent|round|int }}%</strong>
+        </p>
+
+        <h3 class="result-message" style="margin: 30px 0; color: #444;">{{ message }}</h3>
+
+        <div class="result-actions" style="display: flex; flex-direction: column; gap: 15px; max-width: 300px; margin: 0 auto;">
+            
+            <a href="/quiz?cat={{ category if category else '' }}" class="btn btn-retry" style="background: var(--success); color: white; padding: 12px; border-radius: 8px; font-weight: bold;">
+                🔄 Probaj ponovo
+            </a>
+
+            <a href="/leaderboard" class="btn btn-blue" style="background: #3498db; color: white; padding: 12px; border-radius: 8px; font-weight: bold;">
+                📊 Rang Lista
+            </a>
+            
+            <a href="/" class="btn btn-dark" style="background: var(--dark); color: white; padding: 12px; border-radius: 8px; font-weight: bold;">
+                🏠 Početna strana
+            </a>
+        </div>
+    </div>
+</body>
+</html>
