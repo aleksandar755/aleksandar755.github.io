@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aleksandar - Portfolio</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; color: #f8fafc; line-height: 1.6; padding: 20px; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        header { text-align: center; padding: 60px 20px; border-bottom: 1px solid #334155; }
+        h1 { font-size: 2.5rem; color: #38bdf8; margin-bottom: 10px; }
+        p.subtitle { font-size: 1.2rem; color: #94a3b8; }
+        
+        .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 40px; }
+        .card { background: #1e293b; border-radius: 10px; padding: 25px; border: 1px solid #334155; transition: transform 0.2s; }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { color: #f43f5e; margin-bottom: 10px; }
+        .card p { color: #cbd5e1; font-size: 0.95rem; margin-bottom: 15px; }
+        .tags { margin-bottom: 15px; }
+        .tag { background: #0284c7; color: #fff; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; margin-right: 5px; }
+        .btn { display: inline-block; background: #38bdf8; color: #0f172a; text-decoration: none; padding: 8px 16px; border-radius: 6px; font-weight: bold; font-size: 0.9rem; }
+        .btn:hover { background: #7dd3fc; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Aleksandar Dj.</h1>
+            <p class="subtitle">Strukovni inženjer elektrotehnike i računarstva | Web & Digital Content</p>
+        </header>
+
+        <h2 style="margin-top: 40px; color: #e2e8f0;">Moji Projekti</h2>
+
+        <div class="projects">
+            <!-- Projekat 1: Kviz -->
+            <div class="card">
+                <h3>⚡ IQ Clash - Web Kviz Aplikacija</h3>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Flask</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">HTML/CSS</span>
+                </div>
+                <p>Full-stack web aplikacija za testiranje znanja sa sistemom rangiranja i administrativnim panelom.</p>
+                <p><strong>Moj doprinos:</strong> Izrada backend rutinga (<code>app.py</code>), rad sa bazom (<code>database.py</code>) i dizajn admin panela (<code>admin.html</code>).</p>
+            </div>
+
+            <!-- Projekat 2: WordPress -->
+            <div class="card">
+                <h3>🛒 WooCommerce Prodavnica</h3>
+                <div class="tags">
+                    <span class="tag">WordPress</span>
+                    <span class="tag">WooCommerce</span>
+                    <span class="tag">CMS</span>
+                </div>
+                <p>Kompletna e-commerce platforma sa uspostavljenom kategorizacijom proizvoda, korpom i prilagođenim dizajnom.</p>
+            </div>
+
+            <!-- Projekat 3: Photoshop -->
+            <div class="card">
+                <h3>🎨 Grafički Radovi</h3>
+                <div class="tags">
+                    <span class="tag">Photoshop</span>
+                    <span class="tag">UI Design</span>
+                </div>
+                <p>Obrada slika, izrada banera i vizuelnih materijala za web.</p>
+            </div>
+
+            <!-- Projekat 4: Video Edit -->
+            <div class="card">
+                <h3>🎬 Video Montaža</h3>
+                <div class="tags">
+                    <span class="tag">CapCut</span>
+                    <span class="tag">Video Editing</span>
+                </div>
+                <p>Kratka dinamična video obrada sa speed ramping-om i efektima.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
