@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aleksandar - Portfolio</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; color: #f8fafc; line-height: 1.6; padding: 20px; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        header { text-align: center; padding: 50px 20px 30px; border-bottom: 1px solid #334155; margin-bottom: 30px; position: relative; }
+        h1 { font-size: 2.8rem; color: #38bdf8; margin-bottom: 10px; }
+        p.subtitle { font-size: 1.15rem; color: #94a3b8; }
+        
+        /* Language switcher */
+        .lang-switch { position: absolute; top: 20px; right: 20px; display: flex; gap: 8px; }
+        .lang-btn { background: #1e293b; color: #38bdf8; border: 1px solid #334155; padding: 6px 12px; border-radius: 6px; text-decoration: none; font-size: 0.85rem; font-weight: bold; transition: background 0.2s, color 0.2s; }
+        .lang-btn:hover, .lang-btn.active { background: #38bdf8; color: #0f172a; }
+
+        .section-title { margin-top: 50px; margin-bottom: 20px; color: #e2e8f0; font-size: 1.8rem; border-left: 4px solid #38bdf8; padding-left: 12px; }
+        
+        .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .card { background: #1e293b; border-radius: 12px; padding: 25px; border: 1px solid #334155; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+        .card h3 { color: #f43f5e; margin-bottom: 12px; font-size: 1.4rem; }
+        .card p { color: #cbd5e1; font-size: 0.95rem; margin-bottom: 15px; }
+        
+        .card-full { grid-column: 1 / -1; }
+        
+        .tags { margin-bottom: 15px; display: flex; flex-wrap: wrap; gap: 5px; }
+        .tag { background: #0284c7; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+        
+        .btn { display: inline-block; background: #38bdf8; color: #0f172a; text-decoration: none; padding: 10px 18px; border-radius: 6px; font-weight: bold; font-size: 0.9rem; text-align: center; transition: background 0.2s; margin-top: 10px; }
+        .btn:hover { background: #7dd3fc; }
+
+        /* Poster Gallery */
+        .poster-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 15px; }
+        .poster-grid img { width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: transform 0.2s; }
+        .poster-grid img:hover { transform: scale(1.02); }
+
+        /* Figma Screens */
+        .figma-gallery { display: flex; flex-direction: column; gap: 15px; margin-top: 15px; }
+        .figma-gallery img { width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+
+        /* Video Player */
+        .video-container { margin: 15px 0; width: 100%; background: #000; border-radius: 8px; overflow: hidden; }
+        .video-container iframe { width: 100%; height: 420px; border: none; display: block; }
+
+        @media (max-width: 768px) {
+            .video-container iframe { height: 280px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="lang-switch">
+                <a href="index.html" class="lang-btn">SR</a>
+                <a href="en.html" class="lang-btn active">EN</a>
+            </div>
+            <h1>Aleksandar Đurović</h1>
+            <p class="subtitle">Bachelor of Applied Science in IT & Systems | Web Development & Digital Content</p>
+        </header>
+
+        <h2 class="section-title">Projects & Works</h2>
+
+        <div class="projects">
+            <!-- Project 1: Quiz App -->
+            <div class="card">
+                <div>
+                    <h3>⚡ IQ Clash - Web Quiz Application</h3>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Flask</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">HTML/CSS</span>
+                    </div>
+                    <p>Full-stack web application designed for testing knowledge featuring a leaderboard ranking system and a custom administrative dashboard.</p>
+                    <p><strong>My Contribution:</strong> Developed backend routing (<code>app.py</code>), database management (<code>database.py</code>), and admin panel UI/UX (<code>admin.html</code>).</p>
+                </div>
+                <a href="https://github.com/aleksandar755/aleksandar755.github.io" target="_blank" class="btn">View Source Code on GitHub</a>
+            </div>
+
+            <!-- Project 2: WordPress / FotoRent -->
+            <div class="card">
+                <div>
+                    <h3>🛒 WooCommerce E-commerce (FotoRent)</h3>
+                    <div class="tags">
+                        <span class="tag">WordPress</span>
+                        <span class="tag">WooCommerce</span>
+                        <span class="tag">CMS</span>
+                        <span class="tag">E-Business</span>
+                    </div>
+                    <p>Comprehensive e-commerce platform built for professional photo and video equipment rental, featuring advanced categorization, booking calendars, and automated checkout processes.</p>
+                </div>
+                <a href="FotoRent-Dokumentacija.pdf" target="_blank" class="btn">View E-Business Plan (PDF)</a>
+            </div>
+
+            <!-- Project 3: Information Systems Modeling -->
+            <div class="card">
+                <div>
+                    <h3>📊 Information System Modeling</h3>
+                    <div class="tags">
+                        <span class="tag">BPwin (IDEF0)</span>
+                        <span class="tag">ERwin (IDEF1X)</span>
+                        <span class="tag">MS Access</span>
+                    </div>
+                    <p>Academic seminar project modeling the "Control Plan" document workflow. Includes functional and informational modeling, relational database architecture, forms, queries, and reports.</p>
+                </div>
+                <a href="Aleksandar_Djurovic_1064_2023_seminarski.pdf" target="_blank" class="btn">View Seminar Paper (PDF)</a>
+            </div>
+
+            <!-- Project 4: Figma UI/UX -->
+            <div class="card card-full">
+                <div>
+                    <h3>📱 MoodMate — Mobile App UI/UX Design</h3>
+                    <div class="tags">
+                        <span class="tag">Figma</span>
+                        <span class="tag">UI/UX</span>
+                        <span class="tag">Mobile Design</span>
+                    </div>
+                    <p>Complete mobile user interface designed in Figma for a mood-tracking and mental wellness application. Showcasing screens from the welcome flow and mood check-ins to history logs and user profiles.</p>
+                    
+                    <div class="figma-gallery">
+                        <img src="images/Figma_1.png" alt="MoodMate Figma screens - Welcome and Log in">
+                        <img src="images/Figma_2.png" alt="MoodMate Figma screens - History and Profile">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5: Photoshop Posters -->
+            <div class="card card-full">
+                <div>
+                    <h3>🎨 Graphic Design & Posters (Photoshop)</h3>
+                    <div class="tags">
+                        <span class="tag">Adobe Photoshop</span>
+                        <span class="tag">Photo Manipulation</span>
+                        <span class="tag">Typography</span>
+                    </div>
+                    <p>Custom sports posters created in Adobe Photoshop, emphasizing visual composition, layer masking, advanced shading techniques, and striking typography.</p>
+                    
+                    <div class="poster-grid">
+                        <img src="images/cech.jpg" alt="Petr Cech poster">
+                        <img src="images/djokovic.jpg" alt="Novak Djokovic poster">
+                        <img src="images/kante.jpg" alt="N'Golo Kante poster">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6: Video Editing -->
+            <div class="card card-full">
+                <div>
+                    <h3>🎬 Video Editing & Production</h3>
+                    <div class="tags">
+                        <span class="tag">CapCut</span>
+                        <span class="tag">Video Editing</span>
+                        <span class="tag">Motion</span>
+                    </div>
+                    <p>Dynamic sports video montage produced with fluid pacing, professional visual effects, and audio balancing.</p>
+                    
+                    <div class="video-container">
+                        <iframe 
+                            src="https://drive.google.com/file/d/1OZynO4q7jnLR7yW-4ucJErfPpmJ2l9se/preview" 
+                            allow="autoplay" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
