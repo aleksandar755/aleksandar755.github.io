@@ -7,20 +7,43 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; color: #f8fafc; line-height: 1.6; padding: 20px; }
-        .container { max-width: 1000px; margin: 0 auto; }
-        header { text-align: center; padding: 60px 20px; border-bottom: 1px solid #334155; }
-        h1 { font-size: 2.5rem; color: #38bdf8; margin-bottom: 10px; }
-        p.subtitle { font-size: 1.2rem; color: #94a3b8; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        header { text-align: center; padding: 50px 20px; border-bottom: 1px solid #334155; margin-bottom: 30px; }
+        h1 { font-size: 2.8rem; color: #38bdf8; margin-bottom: 10px; }
+        p.subtitle { font-size: 1.15rem; color: #94a3b8; }
         
-        .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 40px; }
-        .card { background: #1e293b; border-radius: 10px; padding: 25px; border: 1px solid #334155; transition: transform 0.2s; }
-        .card:hover { transform: translateY(-5px); }
-        .card h3 { color: #f43f5e; margin-bottom: 10px; }
+        .section-title { margin-top: 50px; margin-bottom: 20px; color: #e2e8f0; font-size: 1.8rem; border-left: 4px solid #38bdf8; padding-left: 12px; }
+        
+        .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .card { background: #1e293b; border-radius: 12px; padding: 25px; border: 1px solid #334155; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+        .card h3 { color: #f43f5e; margin-bottom: 12px; font-size: 1.4rem; }
         .card p { color: #cbd5e1; font-size: 0.95rem; margin-bottom: 15px; }
-        .tags { margin-bottom: 15px; }
-        .tag { background: #0284c7; color: #fff; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; margin-right: 5px; }
-        .btn { display: inline-block; background: #38bdf8; color: #0f172a; text-decoration: none; padding: 8px 16px; border-radius: 6px; font-weight: bold; font-size: 0.9rem; }
+        
+        .card-full { grid-column: 1 / -1; } /* Kartice koje zauzimaju celu širinu */
+        
+        .tags { margin-bottom: 15px; display: flex; flex-wrap: wrap; gap: 5px; }
+        .tag { background: #0284c7; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+        
+        .btn { display: inline-block; background: #38bdf8; color: #0f172a; text-decoration: none; padding: 10px 18px; border-radius: 6px; font-weight: bold; font-size: 0.9rem; text-align: center; transition: background 0.2s; margin-top: 10px; }
         .btn:hover { background: #7dd3fc; }
+
+        /* Galerija postera */
+        .poster-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 15px; }
+        .poster-grid img { width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: transform 0.2s; }
+        .poster-grid img:hover { transform: scale(1.02); }
+
+        /* Figma ekrani */
+        .figma-gallery { display: flex; flex-direction: column; gap: 15px; margin-top: 15px; }
+        .figma-gallery img { width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+
+        /* Video plejer - veći box */
+        .video-container { margin: 15px 0; width: 100%; background: #000; border-radius: 8px; overflow: hidden; }
+        .video-container iframe { width: 100%; height: 420px; border: none; display: block; }
+
+        @media (max-width: 768px) {
+            .video-container iframe { height: 280px; }
+        }
     </style>
 </head>
 <body>
@@ -30,63 +53,96 @@
             <p class="subtitle">Strukovni inženjer informacionih tehnologija i sistema | Web & Digital Content</p>
         </header>
 
-        <h2 style="margin-top: 40px; color: #e2e8f0;">Moji Projekti</h2>
+        <h2 class="section-title">Moji Projekti i Radovi</h2>
 
         <div class="projects">
             <!-- Projekat 1: Kviz -->
             <div class="card">
-                <h3>⚡ IQ Clash - Web Kviz Aplikacija</h3>
-                <div class="tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">Flask</span>
-                    <span class="tag">MySQL</span>
-                    <span class="tag">HTML/CSS</span>
+                <div>
+                    <h3>⚡ IQ Clash - Web Kviz Aplikacija</h3>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Flask</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">HTML/CSS</span>
+                    </div>
+                    <p>Full-stack web aplikacija za testiranje znanja sa sistemom rangiranja i administrativnim panelom.</p>
+                    <p><strong>Moj doprinos:</strong> Izrada backend rutinga (<code>app.py</code>), rad sa bazom (<code>database.py</code>) i dizajn admin panela (<code>admin.html</code>).</p>
                 </div>
-                <p>Full-stack web aplikacija za testiranje znanja sa sistemom rangiranja i administrativnim panelom.</p>
-                <p><strong>Moj doprinos:</strong> Izrada backend rutinga (<code>app.py</code>), rad sa bazom (<code>database.py</code>) i dizajn admin panela (<code>admin.html</code>).</p>
-                <a href="https://github.com/aleksandar755/aleksandar755.github.io" target="_blank" class="btn" style="margin-top: 15px;">Pogledaj kod na GitHub-u</a>
+                <a href="https://github.com/aleksandar755/aleksandar755.github.io" target="_blank" class="btn">Pogledaj kod na GitHub-u</a>
             </div>
 
             <!-- Projekat 2: WordPress -->
             <div class="card">
-                <h3>🛒 WooCommerce Prodavnica</h3>
-                <div class="tags">
-                    <span class="tag">WordPress</span>
-                    <span class="tag">WooCommerce</span>
-                    <span class="tag">CMS</span>
+                <div>
+                    <h3>🛒 WooCommerce Prodavnica (FotoRent)</h3>
+                    <div class="tags">
+                        <span class="tag">WordPress</span>
+                        <span class="tag">WooCommerce</span>
+                        <span class="tag">CMS</span>
+                        <span class="tag">E-biznis</span>
+                    </div>
+                    <p>Kompletna e-commerce platforma za rentiranje foto-video opreme sa uspostavljenom kategorizacijom, kalendarom rezervacija i sistemom naplate.</p>
                 </div>
-                <p>Kompletna e-commerce platforma sa uspostavljenom kategorizacijom proizvoda, korpom i prilagođenim dizajnom.</p>
                 <a href="FotoRent-Dokumentacija.pdf" target="_blank" class="btn">Pogledaj E-biznis plan (PDF)</a>
             </div>
 
-            <!-- Projekat 3: Photoshop -->
-            <div class="card">
-                <h3>🎨 Grafički Radovi</h3>
-                <div class="tags">
-                    <span class="tag">Photoshop</span>
-                    <span class="tag">UI Design</span>
+            <!-- Projekat 3: Figma UI/UX (Zauzima celu širinu zbog širine slika) -->
+            <div class="card card-full">
+                <div>
+                    <h3>📱 MoodMate — UI/UX Dizajn Aplikacije</h3>
+                    <div class="tags">
+                        <span class="tag">Figma</span>
+                        <span class="tag">UI/UX</span>
+                        <span class="tag">Mobile Design</span>
+                    </div>
+                    <p>Kompletan korisnički interfejs dizajniran u Figmi za mobilnu aplikaciju za praćenje i analizu raspoloženja. Prikaz ekrana od welcome ekrana, unosa raspoloženja do istorije i profila.</p>
+                    
+                    <div class="figma-gallery">
+                        <img src="images/Figma_1.png" alt="MoodMate Figma ekrani - prijava i unos">
+                        <img src="images/Figma_2.png" alt="MoodMate Figma ekrani - istorija i podešavanja">
+                    </div>
                 </div>
-                <p>Obrada slika, izrada banera i vizuelnih materijala za web.</p>
             </div>
 
-            <!-- Projekat 4: Video Edit -->
-            <div class="card">
-                <h3>🎬 Video Montaža</h3>
-                <div class="tags">
-                    <span class="tag">CapCut</span>
-                    <span class="tag">Video Editing</span>
+            <!-- Projekat 4: Photoshop Posteri (Zauzima celu širinu) -->
+            <div class="card card-full">
+                <div>
+                    <h3>🎨 Grafički Dizajn i Posteri (Photoshop)</h3>
+                    <div class="tags">
+                        <span class="tag">Adobe Photoshop</span>
+                        <span class="tag">Photo Manipulation</span>
+                        <span class="tag">Typography</span>
+                    </div>
+                    <p>Autorski sportski posteri kreirani u Adobe Photoshop-u sa naglaskom na vizuelnu kompoziciju, rad sa maskama, senčenje i autentičnu tipografiju.</p>
+                    
+                    <div class="poster-grid">
+                        <img src="images/cech.jpg" alt="Petr Cech poster">
+                        <img src="images/djokovic.jpg" alt="Novak Djokovic poster">
+                        <img src="images/kante.jpg" alt="N'Golo Kante poster">
+                    </div>
                 </div>
-                <p>Kratka dinamična video obrada sa speed ramping-om i efektima.</p>
-                <div class="video-container" style="margin: 15px 0;">
-  <iframe 
-    src="https://drive.google.com/file/d/1OZynO4q7jnLR7yW-4ucJErfPpmJ2l9se/preview" 
-    width="100%" 
-    height="280" 
-    allow="autoplay" 
-    allowfullscreen 
-    style="border: none; border-radius: 8px;">
-  </iframe>
-</div>
+            </div>
+
+            <!-- Projekat 5: Video Edit (Zauzima celu širinu zbog uvećanog plejera) -->
+            <div class="card card-full">
+                <div>
+                    <h3>🎬 Video Montaža i Produkcija</h3>
+                    <div class="tags">
+                        <span class="tag">CapCut</span>
+                        <span class="tag">Video Editing</span>
+                        <span class="tag">Motion</span>
+                    </div>
+                    <p>Dinamnična sportska video montaža realizovana sa efektima, usklađivanjem ritma i obradom zvuka.</p>
+                    
+                    <div class="video-container">
+                        <iframe 
+                            src="https://drive.google.com/file/d/1OZynO4q7jnLR7yW-4ucJErfPpmJ2l9se/preview" 
+                            allow="autoplay" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
