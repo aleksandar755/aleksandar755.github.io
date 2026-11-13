@@ -12,10 +12,12 @@
         h1 { font-size: 2.8rem; color: #38bdf8; margin-bottom: 10px; }
         p.subtitle { font-size: 1.15rem; color: #94a3b8; }
         
-        /* Language switcher */
-        .lang-switch { position: absolute; top: 20px; right: 20px; display: flex; gap: 8px; }
-        .lang-btn { background: #1e293b; color: #38bdf8; border: 1px solid #334155; padding: 6px 12px; border-radius: 6px; text-decoration: none; font-size: 0.85rem; font-weight: bold; transition: background 0.2s, color 0.2s; }
-        .lang-btn:hover, .lang-btn.active { background: #38bdf8; color: #0f172a; }
+        /* Top right controls (Language & CV) */
+        .top-controls { position: absolute; top: 20px; right: 20px; display: flex; gap: 10px; align-items: center; }
+        .lang-switch { display: flex; gap: 5px; }
+        .lang-btn, .cv-btn { background: #1e293b; color: #38bdf8; border: 1px solid #334155; padding: 6px 12px; border-radius: 6px; text-decoration: none; font-size: 0.85rem; font-weight: bold; transition: background 0.2s, color 0.2s; }
+        .lang-btn:hover, .lang-btn.active, .cv-btn:hover { background: #38bdf8; color: #0f172a; }
+        .cv-btn { background: #0284c7; color: #fff; }
 
         .section-title { margin-top: 50px; margin-bottom: 20px; color: #e2e8f0; font-size: 1.8rem; border-left: 4px solid #38bdf8; padding-left: 12px; }
         
@@ -48,15 +50,19 @@
 
         @media (max-width: 768px) {
             .video-container iframe { height: 280px; }
+            .top-controls { position: static; justify-content: center; margin-bottom: 20px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <div class="lang-switch">
-                <a href="index.html" class="lang-btn active">SR</a>
-                <a href="en.html" class="lang-btn">EN</a>
+            <div class="top-controls">
+                <a href="Aleksandar_Djurovic_CV_SR.pdf" target="_blank" class="cv-btn">📄 Preuzmi CV</a>
+                <div class="lang-switch">
+                    <a href="index.html" class="lang-btn active">SR</a>
+                    <a href="en.html" class="lang-btn">EN</a>
+                </div>
             </div>
             <h1>Aleksandar Đurović</h1>
             <p class="subtitle">Strukovni inženjer informacionih tehnologija i sistema | Web & Digital Content</p>
