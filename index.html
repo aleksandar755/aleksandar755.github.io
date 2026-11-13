@@ -8,10 +8,15 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; color: #f8fafc; line-height: 1.6; padding: 20px; }
         .container { max-width: 1100px; margin: 0 auto; }
-        header { text-align: center; padding: 50px 20px; border-bottom: 1px solid #334155; margin-bottom: 30px; }
+        header { text-align: center; padding: 50px 20px 30px; border-bottom: 1px solid #334155; margin-bottom: 30px; position: relative; }
         h1 { font-size: 2.8rem; color: #38bdf8; margin-bottom: 10px; }
         p.subtitle { font-size: 1.15rem; color: #94a3b8; }
         
+        /* Language switcher */
+        .lang-switch { position: absolute; top: 20px; right: 20px; display: flex; gap: 8px; }
+        .lang-btn { background: #1e293b; color: #38bdf8; border: 1px solid #334155; padding: 6px 12px; border-radius: 6px; text-decoration: none; font-size: 0.85rem; font-weight: bold; transition: background 0.2s, color 0.2s; }
+        .lang-btn:hover, .lang-btn.active { background: #38bdf8; color: #0f172a; }
+
         .section-title { margin-top: 50px; margin-bottom: 20px; color: #e2e8f0; font-size: 1.8rem; border-left: 4px solid #38bdf8; padding-left: 12px; }
         
         .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
@@ -49,6 +54,10 @@
 <body>
     <div class="container">
         <header>
+            <div class="lang-switch">
+                <a href="index.html" class="lang-btn active">SR</a>
+                <a href="en.html" class="lang-btn">EN</a>
+            </div>
             <h1>Aleksandar Đurović</h1>
             <p class="subtitle">Strukovni inženjer informacionih tehnologija i sistema | Web & Digital Content</p>
         </header>
@@ -98,7 +107,7 @@
                     </div>
                     <p>Seminarski rad za dokument „Plan kontrolisanja“. Obuhvata funkcionalno i informaciono modeliranje, kreiranje relacionih baza, formi, upita i izveštaja.</p>
                 </div>
-                <a href="Aleksandar_Djurovic_inf_sistem.pdf" target="_blank" class="btn">Pogledaj Seminarski rad (PDF)</a>
+                <a href="Aleksandar_Djurovic_1064_2023_seminarski.pdf" target="_blank" class="btn">Pogledaj Seminarski rad (PDF)</a>
             </div>
 
             <!-- Projekat 4: Figma UI/UX -->
